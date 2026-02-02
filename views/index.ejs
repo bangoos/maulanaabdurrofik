@@ -1,0 +1,124 @@
+<%- include('partials/header') %>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">Hi, I'm <%= profile ? profile.name : 'Maulana Abdurrofik' %></h1>
+            <p class="hero-subtitle"><%= profile ? profile.title : 'Full Stack Developer' %></p>
+            <p class="hero-description">
+                <%= profile ? profile.bio : 'Passionate full stack developer with expertise in Node.js, React, and modern web technologies. I love creating beautiful, functional, and user-friendly applications.' %>
+            </p>
+            <div class="cta-buttons">
+                <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                <a href="/contact" class="btn btn-outline">Get In Touch</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="portfolio">
+    <div class="container">
+        <h2 class="section-title">My Portfolio</h2>
+        
+        <!-- Filter Buttons -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="web">Web Development</button>
+            <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+            <button class="filter-btn" data-filter="design">Design</button>
+        </div>
+        
+        <!-- Portfolio Grid -->
+        <div class="portfolio-grid">
+            <% portfolios.forEach(portfolio => { %>
+                <div class="portfolio-card" data-category="<%= portfolio.category %>">
+                    <% if (portfolio.imageUrl) { %>
+                        <img src="<%= portfolio.imageUrl %>" alt="<%= portfolio.title %>" class="portfolio-image">
+                    <% } else { %>
+                        <div class="portfolio-image">
+                            <i class="fas fa-code" style="font-size: 3rem; color: white; display: flex; align-items: center; justify-content: center; height: 100%;"></i>
+                        </div>
+                    <% } %>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title"><%= portfolio.title %></h3>
+                        <p class="portfolio-description"><%= portfolio.description %></p>
+                        <div class="portfolio-tech">
+                            <% portfolio.technologies.forEach(tech => { %>
+                                <span class="tech-tag"><%= tech %></span>
+                            <% }) %>
+                        </div>
+                        <div class="portfolio-links">
+                            <% if (portfolio.projectUrl) { %>
+                                <a href="<%= portfolio.projectUrl %>" target="_blank" class="portfolio-link">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            <% } %>
+                            <% if (portfolio.githubUrl) { %>
+                                <a href="<%= portfolio.githubUrl %>" target="_blank" class="portfolio-link">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+        
+        <% if (portfolios.length === 0) { %>
+            <div style="text-align: center; padding: 3rem;">
+                <i class="fas fa-folder-open" style="font-size: 3rem; color: var(--text-muted); margin-bottom: 1rem;"></i>
+                <p style="color: var(--text-secondary);">No projects available yet. Check back soon!</p>
+            </div>
+        <% } %>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+<% if (featuredPortfolios && featuredPortfolios.length > 0) { %>
+<section class="featured-projects" style="background-color: var(--bg-primary); padding: 5rem 2rem;">
+    <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="portfolio-grid">
+            <% featuredPortfolios.forEach(portfolio => { %>
+                <div class="portfolio-card featured">
+                    <% if (portfolio.imageUrl) { %>
+                        <img src="<%= portfolio.imageUrl %>" alt="<%= portfolio.title %>" class="portfolio-image">
+                    <% } else { %>
+                        <div class="portfolio-image">
+                            <i class="fas fa-star" style="font-size: 3rem; color: white; display: flex; align-items: center; justify-content: center; height: 100%;"></i>
+                        </div>
+                    <% } %>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">
+                            <%= portfolio.title %>
+                            <i class="fas fa-star" style="color: gold; margin-left: 0.5rem;"></i>
+                        </h3>
+                        <p class="portfolio-description"><%= portfolio.description %></p>
+                        <div class="portfolio-tech">
+                            <% portfolio.technologies.forEach(tech => { %>
+                                <span class="tech-tag"><%= tech %></span>
+                            <% }) %>
+                        </div>
+                        <div class="portfolio-links">
+                            <% if (portfolio.projectUrl) { %>
+                                <a href="<%= portfolio.projectUrl %>" target="_blank" class="portfolio-link">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            <% } %>
+                            <% if (portfolio.githubUrl) { %>
+                                <a href="<%= portfolio.githubUrl %>" target="_blank" class="portfolio-link">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+<% } %>
+
+<%- include('partials/footer') %>

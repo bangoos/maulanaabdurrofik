@@ -1,0 +1,191 @@
+# Requirements for Hostinger Deployment
+
+## Hosting Requirements
+
+### Hostinger Plan
+- **Minimum**: Premium Hosting Plan
+- **Recommended**: Business Hosting Plan
+- **Required Features**:
+  - Node.js support
+  - SSH access
+  - .htaccess support
+  - SSL certificate (free Let's Encrypt)
+
+### Technical Requirements
+
+#### Node.js Environment
+- Node.js version: 16.0 or higher
+- npm (Node Package Manager)
+- PM2 (Process Manager - recommended)
+
+#### Database
+- MongoDB Atlas (free tier recommended)
+- OR Hostinger's MongoDB if available
+- Connection string for remote database
+
+#### Domain & DNS
+- Domain: maulanaabdurrofik.id
+- Nameservers pointed to Hostinger
+- SSL certificate configured
+
+## Software Dependencies
+
+### Node.js Packages (from package.json)
+- express: ^4.18.2
+- mongoose: ^7.5.0
+- ejs: ^3.1.9
+- express-session: ^1.17.3
+- bcryptjs: ^2.4.3
+- multer: ^1.4.5-lts.1
+- dotenv: ^16.3.1
+- cors: ^2.8.5
+- helmet: ^7.0.0
+- express-rate-limit: ^6.10.0
+
+### Development Dependencies
+- nodemon: ^3.0.1 (for development only)
+
+## File Structure Requirements
+
+```
+maulanaabdurrofik/
+├── models/                 # MongoDB models
+├── routes/                # Express routes
+├── views/                 # EJS templates
+├── public/                # Static assets
+├── uploads/               # File upload directory (writable)
+├── .env                   # Environment variables (create from .env.example)
+├── .htaccess              # Apache configuration
+├── package.json           # Node.js dependencies
+├── server.js              # Main application file
+├── README.md              # Documentation
+└── requirements.txt       # This file
+```
+
+## Environment Variables
+
+Create `.env` file with the following variables:
+
+```env
+NODE_ENV=production
+PORT=3000
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/portfolio
+SESSION_SECRET=your-super-secure-production-secret-key
+ADMIN_EMAIL=admin@maulanaabdurrofik.id
+ADMIN_PASSWORD=your-secure-admin-password
+```
+
+## Security Requirements
+
+### File Permissions
+- uploads/: 755 (readable and writable by web server)
+- .env: 600 (readable only by owner)
+- Other files: 644 (readable by web server)
+
+### Security Headers
+- X-Content-Type-Options: nosniff
+- X-Frame-Options: DENY
+- X-XSS-Protection: "1; mode=block"
+- Referrer-Policy: "strict-origin-when-cross-origin"
+
+## Performance Requirements
+
+### Server Configuration
+- Gzip compression enabled
+- Browser caching configured
+- Static file optimization
+- Image optimization
+
+### Database Optimization
+- MongoDB Atlas indexing
+- Connection pooling
+- Query optimization
+
+## Deployment Checklist
+
+### Pre-Deployment
+- [ ] Test application locally
+- [ ] Set up MongoDB Atlas database
+- [ ] Create production .env file
+- [ ] Optimize images and assets
+- [ ] Test all functionality
+
+### Deployment Steps
+- [ ] Upload all files to Hostinger
+- [ ] Install Node.js dependencies
+- [ ] Configure environment variables
+- [ ] Set up PM2 process manager
+- [ ] Configure .htaccess
+- [ ] Test website functionality
+- [ ] Set up SSL certificate
+- [ ] Test admin panel
+
+### Post-Deployment
+- [ ] Monitor website performance
+- [ ] Check error logs
+- [ ] Test all features
+- [ ] Set up monitoring
+- [ ] Configure backups
+
+## Monitoring & Maintenance
+
+### Logs to Monitor
+- Application logs (PM2 logs)
+- Error logs
+- Access logs
+- Database performance
+
+### Regular Maintenance
+- Update Node.js dependencies
+- Monitor disk space
+- Check SSL certificate expiry
+- Database backup verification
+- Performance monitoring
+
+## Troubleshooting
+
+### Common Issues
+1. **Application won't start**
+   - Check Node.js version compatibility
+   - Verify all dependencies are installed
+   - Check environment variables
+   - Review error logs
+
+2. **Database connection issues**
+   - Verify MongoDB Atlas connection string
+   - Check IP whitelist in MongoDB Atlas
+   - Test network connectivity
+
+3. **File upload problems**
+   - Check uploads directory permissions
+   - Verify file size limits
+   - Check available disk space
+
+4. **Performance issues**
+   - Monitor server resources
+   - Check database query performance
+   - Optimize static assets
+
+### Emergency Contacts
+- Hostinger Support: 24/7 live chat
+- MongoDB Atlas Support: Documentation and community
+- Developer: Check README.md for troubleshooting guide
+
+## Additional Resources
+
+### Documentation
+- Hostinger Node.js Hosting Guide
+- MongoDB Atlas Documentation
+- Express.js Documentation
+- PM2 Process Manager Documentation
+
+### Tools
+- FileZilla (FTP client)
+- MongoDB Compass (Database management)
+- Chrome DevTools (Website debugging)
+- GTmetrix (Performance testing)
+
+---
+
+**Last Updated**: February 2026
+**Version**: 1.0.0
