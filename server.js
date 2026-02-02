@@ -78,6 +78,23 @@ app.get("/health", (req, res) => {
     });
 });
 
+// Debug static files
+app.get("/debug-static", (req, res) => {
+    const fs = require("fs");
+    const path = require("path");
+
+    const cssPath = path.join(__dirname, "public", "css", "style.css");
+    const jsPath = path.join(__dirname, "public", "js", "main.js");
+
+    res.json({
+        css_exists: fs.existsSync(cssPath),
+        js_exists: fs.existsSync(jsPath),
+        css_path: cssPath,
+        js_path: jsPath,
+        public_dir: path.join(__dirname, "public"),
+    });
+});
+
 // 404 handler
 app.use((req, res) => {
     console.log("404 - Route not found:", req.path);
