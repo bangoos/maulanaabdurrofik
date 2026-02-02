@@ -47,7 +47,17 @@ mongoose
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
+
+// Static files serving - Fix path issue
+const publicPath = path.join(__dirname, "public");
+console.log("Serving static files from:", publicPath);
+app.use(express.static(publicPath));
+
+// Log static file requests
+app.use("/css", express.static(path.join(__dirname, "public", "css")));
+app.use("/js", express.static(path.join(__dirname, "public", "js")));
+app.use("/images", express.static(path.join(__dirname, "public", "images")));
+
 app.set("view engine", "ejs");
 
 // Session configuration

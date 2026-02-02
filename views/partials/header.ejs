@@ -1,57 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <meta name="description" content="Maulana Abdurrofik - Full Stack Developer Portfolio">
-    <meta name="keywords" content="portfolio, developer, web development, node.js, maulana abdurrofik">
-    <meta name="author" content="Maulana Abdurrofik">
-    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <%= title %>
+    </title>
+    <meta name="description" content="Maulana Abdurrofik - Full Stack Developer Portfolio" />
+    <meta name="keywords" content="portfolio, developer, web development, node.js, maulana abdurrofik" />
+    <meta name="author" content="Maulana Abdurrofik" />
+
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="<%= title %>">
-    <meta property="og:description" content="Maulana Abdurrofik - Full Stack Developer Portfolio">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://maulanaabdurrofik.id">
-    
+    <meta property="og:title" content="<%= title %>" />
+    <meta property="og:description" content="Maulana Abdurrofik - Full Stack Developer Portfolio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://maulanaabdurrofik.id" />
+
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    
+    <!-- <link rel="icon" type="image/x-icon" href="/images/favicon.ico"> -->
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="/" class="nav-logo">MA</a>
-            
+
             <ul class="nav-menu">
                 <li><a href="/" class="nav-link">Home</a></li>
                 <li><a href="/about" class="nav-link">About</a></li>
                 <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
                 <li><a href="/contact" class="nav-link">Contact</a></li>
                 <li>
-                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-                        🌙
-                    </button>
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
                 </li>
             </ul>
-            
+
             <!-- Mobile Menu Toggle -->
             <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle mobile menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         </div>
-        
+
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="mobile-menu">
             <ul>
@@ -62,3 +64,6 @@
             </ul>
         </div>
     </nav>
+</body>
+
+</html>
